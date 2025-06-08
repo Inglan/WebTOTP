@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import Button from "$lib/components/ui/button/button.svelte";
     import Input from "$lib/components/ui/input/input.svelte";
     import * as Select from "$lib/components/ui/select/index.js";
@@ -20,6 +20,12 @@
             code: "696420",
         },
     ]);
+
+    let copyIconStates: boolean[] = $state([]);
+
+    function setCopyIcon(index: number, state: boolean) {
+        copyIconStates[index] = state;
+    }
 </script>
 
 <div
@@ -51,7 +57,7 @@
 <div
     class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 p-3 gap-3"
 >
-    {#each authenticators as authenticator}
+    {#each authenticators as authenticator, index}
         <Card.Root class="relative overflow-hidden">
             <div
                 class="absolute w-40 h-40 -top-20 opacity-20 -left-20 rounded-full blur-2xl"
@@ -81,9 +87,23 @@
                         {authenticator.code}
                     {/if}
                 </div>
-                <Button variant="ghost" size="icon">
-                    <Clipboard class="duration-100" />
-                    <Check class="duration-100 absolute scale-0" />
+                <Button
+                    variant="ghost"
+                    size="icon"
+                    onclick={() => setCopyIcon(index, true)}
+                    onmouseout={() =>
+                        setTimeout(() => setCopyIcon(index, false), 500)}
+                >
+                    <Clipboard
+                        class="duration-300 {copyIconStates[index]
+                            ? 'scale-0'
+                            : 'scale-100'}"
+                    />
+                    <Check
+                        class="duration-300 absolute {copyIconStates[index]
+                            ? 'scale-100'
+                            : 'scale-0'}"
+                    />
                 </Button>
             </Card.Content>
         </Card.Root>
