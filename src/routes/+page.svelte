@@ -12,6 +12,7 @@
     import Check from "@lucide/svelte/icons/check";
     import Git from "@lucide/svelte/icons/folder-git-2";
     import Plus from "@lucide/svelte/icons/plus";
+    import Layers from "@lucide/svelte/icons/layers";
     import { toast } from "svelte-sonner";
 
     let authenticators = $state([
@@ -34,8 +35,9 @@
     <div
         class="flex p-3 gap-3 flex-col md:flex-row items-center border-b-border border-b-1 sticky top-0 bg-background"
     >
-        <div class="flex flex-row gap-3 w-full">
-            <div class="text-xl">WebTOTP</div>
+        <div class="flex flex-row gap-3 w-full items-center">
+            <Layers />
+            WebTOTP
             <Select.Root type="single">
                 <Select.Trigger class="w-full md:w-[180px]"
                     >Vault 1</Select.Trigger
@@ -46,7 +48,7 @@
                 </Select.Content>
             </Select.Root>
         </div>
-        <div class="flex flex-row gap-3 w-full">
+        <div class="flex flex-row gap-3 w-full items-center">
             <Input placeholder="Search" />
             <Button size="icon" variant="outline"
                 ><span class="sr-only">Settings</span><Settings /></Button
