@@ -11,6 +11,7 @@
     import Clipboard from "@lucide/svelte/icons/clipboard";
     import Check from "@lucide/svelte/icons/check";
     import Git from "@lucide/svelte/icons/folder-git-2";
+    import { toast } from "svelte-sonner";
 
     let authenticators = $state([
         {
@@ -93,8 +94,13 @@
                     onclick={() => {
                         navigator.clipboard
                             .writeText(authenticator.code)
-                            .then(() => setCopyIcon(index, true))
-                            .catch((error) => alert("todo"));
+                            .then(() => {
+                                setCopyIcon(index, true);
+                                toast.success("Copied!");
+                            })
+                            .catch((error) =>
+                                toast.error("Failed to copy", error),
+                            );
                     }}
                     onmouseout={() =>
                         setTimeout(() => setCopyIcon(index, false), 500)}
