@@ -35,11 +35,6 @@
 >
     <div class="flex flex-row gap-3 w-full">
         <div class="text-xl">WebTOTP</div>
-        <Button
-            variant="outline"
-            href="https://github.com/Inglan/WebTOTP"
-            target="_blank"><Git />Open source</Button
-        >
         <Select.Root type="single">
             <Select.Trigger class="w-full md:w-[180px]">Vault 1</Select.Trigger>
             <Select.Content>
