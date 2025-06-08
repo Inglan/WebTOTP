@@ -33,7 +33,7 @@
 
 <div class="flex flex-col min-h-screen">
     <div
-        class="flex p-3 gap-3 flex-col md:flex-row items-center border-b-border border-b-1 sticky top-0 bg-background"
+        class="flex p-3 pl-4 gap-3 flex-col md:flex-row items-center border-b-border border-b-1 sticky top-0 bg-background"
     >
         <div class="flex flex-row gap-3 w-full items-center">
             <Layers />
