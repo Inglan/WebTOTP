@@ -70,7 +70,17 @@
                 <Button variant="ghost" size="icon"><Trash /></Button>
             </Card.Header>
             <Card.Content class="flex flex-row">
-                <div class="text-3xl grow">696-420</div>
+                <div class="text-3xl grow font-mono tracking-wider">
+                    {#if authenticator.code.length === 6}
+                        {authenticator.code.slice(0, 3)}
+                        {authenticator.code.slice(3)}
+                    {:else if authenticator.code.length === 8}
+                        {authenticator.code.slice(0, 4)}
+                        {authenticator.code.slice(4)}
+                    {:else}
+                        {authenticator.code}
+                    {/if}
+                </div>
                 <Button variant="ghost" size="icon">
                     <Clipboard class="duration-100" />
                     <Check class="duration-100 absolute scale-0" />
