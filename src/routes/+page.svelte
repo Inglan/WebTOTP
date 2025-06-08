@@ -90,7 +90,12 @@
                 <Button
                     variant="ghost"
                     size="icon"
-                    onclick={() => setCopyIcon(index, true)}
+                    onclick={() => {
+                        navigator.clipboard
+                            .writeText(authenticator.code)
+                            .then(() => setCopyIcon(index, true))
+                            .catch((error) => alert("todo"));
+                    }}
                     onmouseout={() =>
                         setTimeout(() => setCopyIcon(index, false), 500)}
                 >
