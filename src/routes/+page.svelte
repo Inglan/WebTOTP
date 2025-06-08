@@ -11,6 +11,7 @@
     import Clipboard from "@lucide/svelte/icons/clipboard";
     import Check from "@lucide/svelte/icons/check";
     import Git from "@lucide/svelte/icons/folder-git-2";
+    import Plus from "@lucide/svelte/icons/plus";
     import { toast } from "svelte-sonner";
 
     let authenticators = $state([
@@ -35,10 +36,9 @@
     <div class="flex flex-row gap-3 w-full">
         <div class="text-xl">WebTOTP</div>
         <Button
-            size="icon"
             variant="outline"
             href="https://github.com/Inglan/WebTOTP"
-            target="_blank"><Git /></Button
+            target="_blank"><Git />Open source</Button
         >
         <Select.Root type="single">
             <Select.Trigger class="w-full md:w-[180px]">Vault 1</Select.Trigger>
@@ -50,8 +50,15 @@
     </div>
     <div class="flex flex-row gap-3 w-full">
         <Input placeholder="Search" />
-        <Button size="icon" variant="outline"><Settings /></Button>
-        <Button><Lock />Lock</Button>
+        <Button size="icon" variant="outline"
+            ><span class="sr-only">Settings</span><Settings /></Button
+        >
+        <Button size="icon" variant="outline"
+            ><span class="sr-only">Add</span><Plus /></Button
+        >
+        <Button size="icon" variant="outline"
+            ><span class="sr-only">Lock</span><Lock /></Button
+        >
     </div>
 </div>
 
@@ -73,8 +80,12 @@
                         {authenticator.account}</Card.Description
                     >
                 </div>
-                <Button variant="ghost" size="icon"><Pen /></Button>
-                <Button variant="ghost" size="icon"><Trash /></Button>
+                <Button variant="ghost" size="icon"
+                    ><span class="sr-only">Edit</span><Pen /></Button
+                >
+                <Button variant="ghost" size="icon"
+                    ><span class="sr-only">Delete</span><Trash /></Button
+                >
             </Card.Header>
             <Card.Content class="flex flex-row">
                 <div class="text-3xl grow font-mono tracking-wider">
@@ -115,6 +126,7 @@
                             ? 'scale-100'
                             : 'scale-0'}"
                     />
+                    <span class="sr-only">Copy</span>
                 </Button>
             </Card.Content>
         </Card.Root>
