@@ -11,6 +11,15 @@
     import Clipboard from "@lucide/svelte/icons/clipboard";
     import Check from "@lucide/svelte/icons/check";
     import Git from "@lucide/svelte/icons/folder-git-2";
+
+    let authenticators = $state([
+        {
+            name: "Google",
+            issuer: "Google",
+            account: "user@example.com",
+            code: "696420",
+        },
+    ]);
 </script>
 
 <div
@@ -42,15 +51,20 @@
 <div
     class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 p-3 gap-3"
 >
-    {#each Array(20) as id}
+    {#each authenticators as authenticator}
         <Card.Root class="relative overflow-hidden">
             <div
                 class="absolute w-40 h-40 -top-20 opacity-20 -left-20 rounded-full blur-2xl"
             ></div>
             <Card.Header class="flex flex-row">
                 <div class="flex flex-col gap-2 grow">
-                    <Card.Title>Authenticator {id}</Card.Title>
-                    <Card.Description>Account name</Card.Description>
+                    <Card.Title>{authenticator.name}</Card.Title>
+                    <Card.Description
+                        >{(!(authenticator.name == authenticator.issuer) &&
+                            authenticator.issuer + "\n") ||
+                            ""}
+                        {authenticator.account}</Card.Description
+                    >
                 </div>
                 <Button variant="ghost" size="icon"><Pen /></Button>
                 <Button variant="ghost" size="icon"><Trash /></Button>
