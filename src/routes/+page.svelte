@@ -14,7 +14,7 @@
 </script>
 
 <div
-    class="flex p-3 gap-3 flex-col md:flex-row items-center border-b-border border-b-1"
+    class="flex p-3 gap-3 flex-col md:flex-row items-center border-b-border border-b-1 sticky top-0 bg-background"
 >
     <div class="flex flex-row gap-3 w-full">
         <div class="text-xl">WebTOTP</div>
@@ -42,7 +42,7 @@
 <div
     class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 p-3 gap-3"
 >
-    {#each [1, 2, 3, 4, 5] as id}
+    {#each Array(20) as id}
         <Card.Root>
             <Card.Header class="flex flex-row">
                 <div class="flex flex-col gap-2 grow">
