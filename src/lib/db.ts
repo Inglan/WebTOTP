@@ -4,7 +4,6 @@ import { type EntityTable } from "dexie";
 interface Vault {
   id: string; // UUID or short id
   name: string;
-  createdAt: number;
 }
 
 interface VaultKey {
@@ -34,7 +33,6 @@ interface VaultItem {
   vaultId: string; // foreign key to Vault
   encryptedData: Uint8Array;
   iv: Uint8Array;
-  createdAt: number;
 }
 
 const db = new Dexie("VaultAppDatabase") as Dexie & {
@@ -44,9 +42,9 @@ const db = new Dexie("VaultAppDatabase") as Dexie & {
 };
 
 db.version(1).stores({
-  vaults: "id, name, createdAt",
+  vaults: "id, name",
   vaultKeys: "vaultId",
-  vaultItems: "id, vaultId, createdAt",
+  vaultItems: "id, vaultId",
 });
 
 export type { Vault, VaultKey, VaultItem };
