@@ -36,7 +36,7 @@
     <div
         class="flex p-3 pl-4 gap-3 flex-col md:flex-row items-center border-b-border border-b-1 sticky top-0 bg-background"
     >
-        <div class="flex flex-row gap-3 w-full items-center">
+        <div class="flex flex-row gap-3 w-full md:w-fit items-center">
             <Layers />
             WebTOTP
             <Select.Root type="single">
