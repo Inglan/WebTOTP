@@ -80,10 +80,11 @@
 </AlertDialog.Root>
 
 <div
-    class={"flex w-full h-full fixed top-0 left-0 justify-center items-center duration-200" +
+    class={"flex w-full h-full fixed top-0 left-0 justify-center items-center duration-200 flex-row gap-3" +
         (loading ? " opacity-100" : " opacity-0")}
 >
     <Loader class="animate-spin" />
+    Connection to IndexedDB
 </div>
 <div
     class={"flex-col min-h-screen duration-200 flex " +
