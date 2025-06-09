@@ -14,6 +14,7 @@
     import Git from "@lucide/svelte/icons/folder-git-2";
     import Plus from "@lucide/svelte/icons/plus";
     import Layers from "@lucide/svelte/icons/layers";
+    import Loader from "@lucide/svelte/icons/loader-circle";
     import { toast } from "svelte-sonner";
     import { vaults, create } from "$lib/vaults.svelte";
     import { onMount } from "svelte";
@@ -22,9 +23,16 @@
     let onboardingVaultName = $state("");
     let onboardingVaultPassword = $state("");
 
+    let loading = $state(true);
+
     vaults.subscribe((vaults) => {
         if (vaults.length === 0) {
             onboardingDialogOpen = true;
+        }
+
+        if (loading == true) {
+            loading = false;
+            console.log(loading);
         }
     });
 
@@ -71,7 +79,16 @@
     </AlertDialog.Content>
 </AlertDialog.Root>
 
-<div class="flex flex-col min-h-screen">
+<div
+    class={"flex w-full h-full fixed top-0 left-0 justify-center items-center duration-200" +
+        (loading ? " opacity-100" : " opacity-0")}
+>
+    <Loader class="animate-spin" />
+</div>
+<div
+    class={"flex-col min-h-screen duration-200 flex " +
+        ((loading && "opacity-0") || "opacity-100")}
+>
     <div
         class="flex p-3 pl-4 gap-3 flex-col md:flex-row items-center border-b-border border-b-1 sticky top-0 bg-background"
     >
