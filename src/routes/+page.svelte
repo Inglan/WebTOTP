@@ -189,10 +189,10 @@
                 </Card.Content>
             </Card.Root>
         {/each}
-        {#each $vaults as vault}
+        <!-- {#each $vaults as vault}
             {vault.name}
         {/each}
-        <Button onclick={() => create("New Vault")}>add vault</Button>
+        <Button onclick={() => create("New Vault")}>add vault</Button> -->
     </div>
 
     <div
