@@ -19,6 +19,8 @@
     import { onMount } from "svelte";
 
     let setupDialogOpen = $state(false);
+    let onboardingVaultName = $state("");
+    let onboardingVaultPassword = $state("");
 
     vaults.subscribe((vaults) => {
         if (vaults.length === 0) {
@@ -52,10 +54,19 @@
                 encrypted.
             </AlertDialog.Description>
         </AlertDialog.Header>
-        <Input placeholder="Vault Name" />
-        <Input placeholder="Vault Password" type="password" />
+        <Input placeholder="Vault Name" bind:value={onboardingVaultName} />
+        <Input
+            placeholder="Vault Password"
+            type="password"
+            bind:value={onboardingVaultPassword}
+        />
         <AlertDialog.Footer>
-            <AlertDialog.Action>Create</AlertDialog.Action>
+            <AlertDialog.Action
+                onclick={() => {
+                    create(onboardingVaultName);
+                    setupDialogOpen = false;
+                }}>Create</AlertDialog.Action
+            >
         </AlertDialog.Footer>
     </AlertDialog.Content>
 </AlertDialog.Root>
