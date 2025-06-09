@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      dexie:
+        specifier: ^4.0.11
+        version: 4.0.11
     devDependencies:
       '@internationalized/date':
         specifier: ^3.8.2
@@ -555,6 +559,9 @@ packages:
 
   devalue@5.1.1:
     resolution: {integrity: sha512-maua5KUiapvEwiEAe+XnlZ3Rh0GD+qI1J/nb9vrJc3muPXvcF/8gXYTWF76+5DAqHyDUtOIImEuo0YKE9mshVw==}
+
+  dexie@4.0.11:
+    resolution: {integrity: sha512-SOKO002EqlvBYYKQSew3iymBoN2EQ4BDw/3yprjh7kAfFzjBYkaMNa/pZvcA7HSWlcKSQb9XhPe3wKyQ0x4A8A==}
 
   enhanced-resolve@5.18.1:
     resolution: {integrity: sha512-ZSW3ma5GkcQBIpwZTSRAI8N71Uuwgs93IezB7mf7R60tC8ZbJideoDNKjHn2O9KIlx6rkGTTEk1xUCK2E1Y2Yg==}
@@ -1244,6 +1251,8 @@ snapshots:
   detect-libc@2.0.4: {}
 
   devalue@5.1.1: {}
+
+  dexie@4.0.11: {}
 
   enhanced-resolve@5.18.1:
     dependencies:
