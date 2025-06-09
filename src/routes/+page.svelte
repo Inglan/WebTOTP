@@ -14,6 +14,7 @@
     import Plus from "@lucide/svelte/icons/plus";
     import Layers from "@lucide/svelte/icons/layers";
     import { toast } from "svelte-sonner";
+    import { vaults, create } from "$lib/vaults.svelte";
 
     let authenticators = $state([
         {
@@ -131,6 +132,10 @@
                 </Card.Content>
             </Card.Root>
         {/each}
+        {#each $vaults as vault}
+            {vault.name}
+        {/each}
+        <Button onclick={() => create("New Vault")}>add vault</Button>
     </div>
 
     <div
