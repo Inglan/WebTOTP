@@ -3,6 +3,7 @@
     import Input from "$lib/components/ui/input/input.svelte";
     import * as Select from "$lib/components/ui/select/index.js";
     import * as Card from "$lib/components/ui/card/index.js";
+    import * as AlertDialog from "$lib/components/ui/alert-dialog/index.js";
 
     import Lock from "@lucide/svelte/icons/lock";
     import Settings from "@lucide/svelte/icons/settings";
@@ -15,6 +16,15 @@
     import Layers from "@lucide/svelte/icons/layers";
     import { toast } from "svelte-sonner";
     import { vaults, create } from "$lib/vaults.svelte";
+    import { onMount } from "svelte";
+
+    let setupDialogOpen = $state(false);
+
+    vaults.subscribe((vaults) => {
+        if (vaults.length === 0) {
+            setupDialogOpen = true;
+        }
+    });
 
     let authenticators = $state([
         {
@@ -31,6 +41,23 @@
         copyIconStates[index] = state;
     }
 </script>
+
+<AlertDialog.Root open={setupDialogOpen}>
+    <AlertDialog.Content>
+        <AlertDialog.Header>
+            <AlertDialog.Title>Create your first vault</AlertDialog.Title>
+            <AlertDialog.Description>
+                Vaults are containers for your authenticators. Each has it's own
+                password/encryption key. Please note the name will not be
+                encrypted.
+            </AlertDialog.Description>
+        </AlertDialog.Header>
+        <Input placeholder="Vault Name" />
+        <AlertDialog.Footer>
+            <AlertDialog.Action>Create</AlertDialog.Action>
+        </AlertDialog.Footer>
+    </AlertDialog.Content>
+</AlertDialog.Root>
 
 <div class="flex flex-col min-h-screen">
     <div
