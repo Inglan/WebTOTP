@@ -35,7 +35,7 @@ interface VaultItem {
   iv: Uint8Array;
 }
 
-const db = new Dexie("VaultAppDatabase") as Dexie & {
+const db = new Dexie("WebTOTPDatabase") as Dexie & {
   vaults: EntityTable<Vault, "id">;
   vaultKeys: EntityTable<VaultKey, "vaultId">;
   vaultItems: EntityTable<VaultItem, "id">;
