@@ -53,6 +53,7 @@
             </AlertDialog.Description>
         </AlertDialog.Header>
         <Input placeholder="Vault Name" />
+        <Input placeholder="Vault Password" type="password" />
         <AlertDialog.Footer>
             <AlertDialog.Action>Create</AlertDialog.Action>
         </AlertDialog.Footer>
