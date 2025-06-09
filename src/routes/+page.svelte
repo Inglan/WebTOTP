@@ -18,13 +18,13 @@
     import { vaults, create } from "$lib/vaults.svelte";
     import { onMount } from "svelte";
 
-    let setupDialogOpen = $state(false);
+    let onboardingDialogOpen = $state(false);
     let onboardingVaultName = $state("");
     let onboardingVaultPassword = $state("");
 
     vaults.subscribe((vaults) => {
         if (vaults.length === 0) {
-            setupDialogOpen = true;
+            onboardingDialogOpen = true;
         }
     });
 
@@ -44,7 +44,7 @@
     }
 </script>
 
-<AlertDialog.Root open={setupDialogOpen}>
+<AlertDialog.Root open={onboardingDialogOpen}>
     <AlertDialog.Content>
         <AlertDialog.Header>
             <AlertDialog.Title>Create your first vault</AlertDialog.Title>
@@ -64,7 +64,7 @@
             <AlertDialog.Action
                 onclick={() => {
                     create(onboardingVaultName);
-                    setupDialogOpen = false;
+                    onboardingDialogOpen = false;
                 }}>Create</AlertDialog.Action
             >
         </AlertDialog.Footer>
