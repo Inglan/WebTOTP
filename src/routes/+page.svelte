@@ -84,7 +84,7 @@
         (loading ? " opacity-100" : " opacity-0")}
 >
     <Loader class="animate-spin" />
-    Connection to IndexedDB
+    Connecting to IndexedDB
 </div>
 <div
     class={"flex-col min-h-screen duration-200 flex " +
