@@ -198,7 +198,7 @@
     <div
         class="flex mt-auto p-3 gap-3 border-t-1 border-t-border items-center justify-center"
     >
-        Made with love by Ingo
+        This project is
         <Button
             href="https://github.com/Inglan/webtotp"
             target="_blank"
