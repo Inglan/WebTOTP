@@ -10,7 +10,6 @@ interface VaultItem {
   id: string;
   vaultId: string;
   encryptedData: Uint8Array;
-  iv: Uint8Array;
 }
 
 const db = new Dexie("WebTOTPDatabase") as Dexie & {
